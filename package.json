@@ -12,7 +12,8 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"build:package": "svelte-package"
+		"build:package": "svelte-package",
+		"publish": "npm run build:package && npm publish --access public"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
