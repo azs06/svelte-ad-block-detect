@@ -6,9 +6,12 @@ export async function detectAdBlock() {
         mode: 'no-cors',
         cache: 'no-store'
       });
-      
+      // If the request fails
+      await response.json();
       // If the request succeeds but returns a non-2xx status
-      if (!response.ok) return true;
+      if (!response.ok && response.url === googleAdUrl) {
+        return true;
+      }
       
       return false;
     } catch (error) {

@@ -1,12 +1,11 @@
 // adblock.store.js
 import { writable } from "svelte/store";
-import { browser } from "$app/environment"; // SvelteKit environment detection
-import { detectAdBlock } from "$lib/adblock"; // Import the adblock detection function
+import { BROWSER } from "esm-env";
+import { detectAdBlock } from "$lib/adblock"; 
 
 const createAdBlockStore = () => {
   const { subscribe, set } = writable(null);
-
-  if (browser) {
+  if (BROWSER) {
     detectAdBlock()
       .then((adBlockEnabled) => {
         set(adBlockEnabled);
